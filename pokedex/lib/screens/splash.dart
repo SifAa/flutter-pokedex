@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex/screens/pokedex.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -56,8 +57,22 @@ class _SplashScreenState extends State<SplashScreen>
       _fadeController.reverse();
       _scaleController.forward();
     });
-    Future.delayed(const Duration(seconds: 2)).then((value) => value
-        // TODO Navigate to pokedex page
+    Future.delayed(const Duration(seconds: 2)).then(
+        (value) => Navigator.pushReplacement(
+            context,
+            PageRouteBuilder(
+                pageBuilder: (context, animation, secondaryAnimation) =>
+                    const Pokedex(),
+                transitionsBuilder:
+                    (context, animation, secondaryAnimation, child) {
+                  return FadeTransition(
+                    opacity: animation.drive(Tween(begin: 0, end: 1)),
+                    child: child,
+                  );
+                },
+                transitionDuration: const Duration(milliseconds: 671),
+                reverseTransitionDuration: const Duration(milliseconds: 671)))
+        // This navigates to the pokedex page, removing the option to go back to the splash page and changing the transition from the standard animation to a fade animation
         );
   }
 
