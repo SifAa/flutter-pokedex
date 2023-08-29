@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pokedex/widgets/back_button.dart';
 import 'package:pokedex/widgets/details/detail_image.dart';
 import 'package:pokedex/widgets/details/detail_title.dart';
+import 'package:pokedex/widgets/details/detail_data.dart';
 
 class Details extends StatefulWidget {
   final int? id;
@@ -16,6 +17,7 @@ class Details extends StatefulWidget {
 class _DetailsState extends State<Details> {
   final _controller = ScrollController();
   ScrollPhysics _physics = const BouncingScrollPhysics();
+
   @override
   void initState() {
     super.initState();
@@ -45,7 +47,8 @@ class _DetailsState extends State<Details> {
         child: Column(
           children: [
             DetailImage(image: widget.image!, id: widget.id!),
-            DetailTitle(id: widget.id!, name: widget.name!)
+            DetailTitle(id: widget.id!, name: widget.name!),
+            DetailData(id: widget.id!),
           ],
         ),
       ),
