@@ -31,8 +31,19 @@ class _PokedexState extends State<Pokedex> {
         pokemon = data.asMap().entries.map<Pokemon>((e) {
           final id = e.key + 1;
           e.value['id'] = id;
-          e.value['img'] =
-              "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/$id.png";
+          String imgUrl;
+          const String imgUrlBase = "https://www.serebii.net/pokemon/art/";
+
+          // if id is less than 10 add a 00 in front of id
+          if (id <= 9) {
+            imgUrl = '${imgUrlBase}00$id.png';
+          } else if (id <= 99) {
+            imgUrl = '${imgUrlBase}0$id.png';
+          } else {
+            imgUrl = '$imgUrlBase$id.png';
+          }
+
+          e.value['img'] = imgUrl;
           return Pokemon.fromJson(e.value);
         }).toList();
       });
