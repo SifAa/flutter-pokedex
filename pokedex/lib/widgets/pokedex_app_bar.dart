@@ -16,9 +16,10 @@ class _PokedexAppBarState extends State<PokedexAppBar> {
       // onStretchTrigger: (){},
       centerTitle: true,
       expandedHeight: 251,
+      backgroundColor: Theme.of(context).colorScheme.primary,
       title: const Text(
         'Pokedex',
-        style: TextStyle(fontSize: 24),
+        style: TextStyle(fontSize: 24, color: Colors.white),
       ),
       flexibleSpace: FlexibleSpaceBar(
         background: Image.asset('assets/images/logo.jpg', fit: BoxFit.cover),

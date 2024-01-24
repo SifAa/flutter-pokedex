@@ -6,10 +6,10 @@ class DetailImage extends StatelessWidget {
   final String image;
 
   const DetailImage({
-    Key? key,
+    super.key,
     required this.image,
     required this.id,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,15 +29,20 @@ class DetailImage extends StatelessWidget {
                 shape: BoxShape.circle,
               ),
             ),
-            Hero(
-              tag: "image-$id",
-              child: FadeInImage.memoryNetwork(
-                placeholder: kTransparentImage,
-                image: image,
-                fadeInCurve: Curves.easeInOut,
-                fit: BoxFit.contain,
-                alignment: Alignment.center,
-                // imageSemanticLabel: ,
+            Positioned(
+              top: 50.0,
+              left: 0,
+              right: 0,
+              child: Hero(
+                tag: "image-$id",
+                child: FadeInImage.memoryNetwork(
+                  placeholder: kTransparentImage,
+                  image: image,
+                  fadeInCurve: Curves.easeInOut,
+                  fit: BoxFit.contain,
+                  alignment: Alignment.center,
+                  // imageSemanticLabel: ,
+                ),
               ),
             ),
           ],
