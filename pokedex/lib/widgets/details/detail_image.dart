@@ -37,6 +37,7 @@ class DetailImage extends StatelessWidget {
                 fadeInCurve: Curves.easeInOut,
                 fit: BoxFit.contain,
                 alignment: Alignment.center,
+                // imageSemanticLabel: ,
               ),
             ),
           ],

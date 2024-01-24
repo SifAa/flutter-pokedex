@@ -17,3 +17,5 @@ Widget pkmnGridItem(
               name: pokemon.elementAt(index).name,
               image: pokemon.elementAt(index).img),
     );
+
+// Grid items with fadetransition when scrolling

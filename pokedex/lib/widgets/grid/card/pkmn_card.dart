@@ -68,3 +68,5 @@ class PkmnCard extends StatelessWidget {
     );
   }
 }
+
+// The card that shows pokemon image, name, and number put together and styled, as well as making the cards tappable routing to a details page for the individual pokemon

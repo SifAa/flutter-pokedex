@@ -57,3 +57,5 @@ class PkmnCardData extends StatelessWidget {
     );
   }
 }
+
+// The part of the card that shows and styles image and name of the pokemon. Hero animation between the name and the image on the card and the details page

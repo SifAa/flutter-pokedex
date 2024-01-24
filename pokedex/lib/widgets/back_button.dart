@@ -15,3 +15,5 @@ class FabBackBtn extends StatelessWidget {
     );
   }
 }
+
+// A floating button to take the user back to the previous page, it has a transition effect with the search button

@@ -13,6 +13,7 @@ class _PokedexAppBarState extends State<PokedexAppBar> {
     return SliverAppBar(
       pinned: true,
       stretch: true,
+      // onStretchTrigger: (){},
       centerTitle: true,
       expandedHeight: 251,
       title: const Text(
@@ -27,3 +28,7 @@ class _PokedexAppBarState extends State<PokedexAppBar> {
     );
   }
 }
+
+// An appbar with an image that works with slivergrid, the image fades out as one scrolls down so the appbar becomes a solid color (theme primary) and when scrolling back up to the top the image fades in again
+
+// TODO change it so standard it says pokedex, but if there is a prop change it to that

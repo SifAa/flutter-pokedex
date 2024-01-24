@@ -1,7 +1,7 @@
+import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
 import 'package:pokedex/models/poke_model.dart';
 import 'package:pokedex/widgets/grid/pkmnn_grid_items.dart';
-import 'package:auto_animated/auto_animated.dart';
 
 class PkmnGrid extends StatefulWidget {
   final List<Pokemon> pokemon;
@@ -40,3 +40,5 @@ class _PkmnGridState extends State<PkmnGrid> {
     );
   }
 }
+
+// Sliver grid that takes in the width of the screen and determines how many grid items should be shown and how many items total

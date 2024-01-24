@@ -27,3 +27,5 @@ class PkmnCardBg extends StatelessWidget {
     );
   }
 }
+
+// The background for the card with the id number and its styling, hero animation between the id on the card and the details page
