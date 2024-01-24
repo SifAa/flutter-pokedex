@@ -1,11 +1,11 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:pokedex/widgets/pokedex_navbar.dart';
-import 'package:pokedex/widgets/pokedex_app_bar.dart';
-import 'package:pokedex/models/poke_model.dart';
 import 'package:pokedex/api/pokeapi.dart';
+import 'package:pokedex/models/poke_model.dart';
 import 'package:pokedex/widgets/grid/pkmn_grid.dart';
+import 'package:pokedex/widgets/pokedex_app_bar.dart';
+import 'package:pokedex/widgets/pokedex_navbar.dart';
 import 'package:pokedex/widgets/types/type_grid.dart';
 
 class Pokedex extends StatefulWidget {
@@ -16,7 +16,6 @@ class Pokedex extends StatefulWidget {
 }
 
 class _PokedexState extends State<Pokedex> {
-  // Add your logic here
   void _searchButtonPressed() {
     // Put your search logic here
     print("Search button pressed");
@@ -26,7 +25,6 @@ class _PokedexState extends State<Pokedex> {
 
   void getPkmnFromApi() async {
     PokeAPI.getPkmn().then((response) {
-      // print(jsonDecode(response.body)['results']);
       List<Map<String, dynamic>> data =
           List.from(jsonDecode(response.body)['results']);
       setState(() {
@@ -52,7 +50,7 @@ class _PokedexState extends State<Pokedex> {
   @override
   Widget build(BuildContext context) {
     final Widget currentWidget =
-        currentPageIndex == 0 ? PkmnGrid(pokemon: pokemon) : TypeGrid();
+        currentPageIndex == 0 ? PkmnGrid(pokemon: pokemon) : const TypeGrid();
 
     return Scaffold(
       backgroundColor: Colors.white,
