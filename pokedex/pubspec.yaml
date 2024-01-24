@@ -33,12 +33,15 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
+  cupertino_icons: ^1.0.6
 
-  # This package makes it possible to connect to the internet
-  http: ^1.1.0
+  http: ^1.2.0 # This package makes it possible to connect to the internet
   transparent_image: ^2.0.1 # This package is for loading images from the internet
   auto_animated: ^3.2.0 # This package is for scroll animations
+  drift: ^2.15.0 # This package is for database management, the core package defining the APIs you use to access drift databases
+  sqlite3_flutter_libs: ^0.5.19+1 # This package is for drift, the sqlite3 library for flutter
+  path_provider: ^2.1.2 # This package is for drift, the path provider plugin for flutter
+  path: ^1.8.3 # This package is for drift, a string-based path manipulation library
 
 dev_dependencies:
   flutter_test:
@@ -49,7 +52,9 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.1 # This package is for linting, it is a set of recommended lints to encourage good coding practices
+  drift_dev: ^2.15.0 # This package is for database management, the dev package defining the APIs you use to access drift databases
+  build_runner: ^2.4.8 # This package is for generating code for JSON serialization and deserialization
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -64,7 +69,6 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
-  #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
