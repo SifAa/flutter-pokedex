@@ -26,7 +26,7 @@ class DetailTitle extends StatelessWidget {
               type: MaterialType.transparency,
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(
-                  Radius.circular(21),
+                  Radius.circular(35),
                 ),
               ),
               child: Container(

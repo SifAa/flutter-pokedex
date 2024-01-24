@@ -16,7 +16,8 @@ class MyApp extends StatelessWidget {
       title: 'Pokedex',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-            seedColor: const Color.fromARGB(255, 254, 0, 2)),
+            //seedColor: const Color.fromARGB(255, 254, 0, 2)),
+            seedColor: const Color.fromARGB(255, 254, 0, 0)),
       ),
       initialRoute: '/',
       routes: {

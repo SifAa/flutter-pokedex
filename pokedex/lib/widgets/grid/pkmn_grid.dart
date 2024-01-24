@@ -32,7 +32,7 @@ class _PkmnGridState extends State<PkmnGrid> {
           crossAxisSpacing: 4,
           mainAxisSpacing: 4,
           childAspectRatio: 200 / 244),
-      itemCount: 250,
+      itemCount: widget.pokemon.length,
       controller: scrollController,
       showItemDuration: const Duration(milliseconds: 1000),
       showItemInterval: const Duration(milliseconds: 50),

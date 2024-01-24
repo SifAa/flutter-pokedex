@@ -6,6 +6,7 @@ import 'package:pokedex/widgets/pokedex_app_bar.dart';
 import 'package:pokedex/models/poke_model.dart';
 import 'package:pokedex/api/pokeapi.dart';
 import 'package:pokedex/widgets/grid/pkmn_grid.dart';
+import 'package:pokedex/widgets/types/type_grid.dart';
 
 class Pokedex extends StatefulWidget {
   const Pokedex({super.key});
@@ -30,9 +31,10 @@ class _PokedexState extends State<Pokedex> {
           List.from(jsonDecode(response.body)['results']);
       setState(() {
         pokemon = data.asMap().entries.map<Pokemon>((e) {
-          e.value['id'] = e.key + 1;
+          final id = e.key + 1;
+          e.value['id'] = id;
           e.value['img'] =
-              "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${e.key + 1}.png";
+              "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/$id.png";
           return Pokemon.fromJson(e.value);
         }).toList();
       });
@@ -45,8 +47,13 @@ class _PokedexState extends State<Pokedex> {
     getPkmnFromApi();
   }
 
+  int currentPageIndex = 0;
+
   @override
   Widget build(BuildContext context) {
+    final Widget currentWidget =
+        currentPageIndex == 0 ? PkmnGrid(pokemon: pokemon) : TypeGrid();
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: CustomScrollView(
@@ -54,7 +61,10 @@ class _PokedexState extends State<Pokedex> {
         slivers: [
           const PokedexAppBar(),
           const SliverPadding(padding: EdgeInsets.all(4)),
-          PkmnGrid(pokemon: pokemon)
+          currentWidget,
+          const SliverPadding(
+            padding: EdgeInsets.only(bottom: 20),
+          ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -65,7 +75,14 @@ class _PokedexState extends State<Pokedex> {
           Icons.search_rounded,
         ),
       ),
-      bottomNavigationBar: const NavBar(),
+      bottomNavigationBar: NavBar(
+        onPageTapped: (index) {
+          setState(() {
+            currentPageIndex = index;
+          });
+        },
+        currentPageIndex: currentPageIndex, // Pass the currentPageIndex here
+      ),
     );
   }
 }

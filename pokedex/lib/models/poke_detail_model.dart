@@ -1,7 +1,7 @@
 class PokemonDetail {
   int id;
   String name;
-  List<Sprites> sprites;
+  Sprites sprites;
   List<String> types;
   int height;
   int weight;
@@ -19,20 +19,20 @@ class PokemonDetail {
 
   factory PokemonDetail.fromJson(
       Map<String, dynamic> data, BaseStats baseStats) {
-    final spriteData = data['sprites'] as Map<String, dynamic>;
-    final sprites = [
-      Sprites(
-        normal: spriteData['front_default'],
-        shiny: spriteData['front_shiny'],
-        name: 'normal sprite', // Set the name for normal sprite
-      ),
-      Sprites(
-        normal: spriteData['front_shiny'],
-        shiny: spriteData['front_shiny'],
-        name: 'shiny sprite', // Set the name for shiny sprite
-      ),
-      // Add more sprite variations if needed
-    ];
+    final spriteData = data['sprites'] as Map<String, dynamic>? ?? {};
+    final normalSprite = SpriteObject(
+      url: spriteData['front_default'] ?? '',
+      name: 'normal sprite',
+    );
+    final shinySprite = SpriteObject(
+      url: spriteData['front_shiny'] ?? '',
+      name: 'shiny sprite',
+    );
+
+    final sprites = Sprites(
+      normal: normalSprite,
+      shiny: shinySprite,
+    );
 
     List<String> types = List<String>.from(
         data['types'].map((type) => type['type']['name']).toList());
@@ -51,25 +51,37 @@ class PokemonDetail {
   Map<String, dynamic> toJson() => {
         'id': id,
         'name': name,
-        'sprites': sprites.map((sprite) => sprite.toJson()).toList(),
+        'sprites': sprites.toJson(),
         'types': types,
       };
 }
 
 class Sprites {
-  String normal;
-  String shiny;
-  String name; // Add name property
+  SpriteObject normal;
+  SpriteObject shiny;
 
   Sprites({
     required this.normal,
     required this.shiny,
+  });
+
+  Map<String, dynamic> toJson() => {
+        'normal': normal.toJson(),
+        'shiny': shiny.toJson(),
+      };
+}
+
+class SpriteObject {
+  String url;
+  String name;
+
+  SpriteObject({
+    required this.url,
     required this.name,
   });
 
   Map<String, dynamic> toJson() => {
-        'normal': normal,
-        'shiny': shiny,
+        'url': url,
         'name': name,
       };
 }
