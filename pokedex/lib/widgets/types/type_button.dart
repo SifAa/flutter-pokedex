@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex/models/type_list_model.dart';
+import 'package:pokedex/widgets/types/type_pkmn_list.dart';
 
 class TypeBtn extends StatefulWidget {
   final String? type;
@@ -47,7 +48,12 @@ class _TypeBtnState extends State<TypeBtn> {
 
     return FilledButton(
       onPressed: () {
-        print("Type: ${selectedType.name}");
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => TypePkmnList(type: selectedType.name),
+          ),
+        );
       },
       style: ElevatedButton.styleFrom(
         backgroundColor: selectedType.color,
