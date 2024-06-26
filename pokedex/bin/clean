@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# This script is used to clean the project
+
+#This command causes the script to exit immediately if any command exits with a non-zero status, ensuring that errors are not silently ignored
+set -e
+
+# Reset the Flutter build environment
+echo "@\ Cleaning the project..."
+flutter clean
+
+# Clean up the outputs from build_runner.
+# Note: that this is not typically necessary for most applications unless you've made intentional edits to generated files, such as for testing purposes. I have none right now I believe, but I will keep this here for future reference.
+# echo "@\ Cleaning the build_runner..."
+# dart run build_runner clean
+
+# Clean the git by removing all untracked files and directories, excluding important files like !.env
+echo "@\ Cleaning the git..."
+git clean -Xdf --exclude '!.env'

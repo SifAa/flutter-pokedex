@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# This script is used to clean the project and install everything from scratch
+
+#This command causes the script to exit immediately if any command exits with a non-zero status, ensuring that errors are not silently ignored
+set -e
+
+# clean the project
+echo "@\ Cleaning the project"
+./bin/clean
+
+# If macOS system, precache the ios development binaries, for faster builds
+echo "@\ Precaching iOS development binaries"
+if [ "$(uname)" == "Darwin" ]; then
+  flutter precache --ios
+fi
+
+# install everything from scratch
+echo "@\ Installing everything from scratch"
+./bin/install
+
+# at the end it will show the date time of running this, so I can know when it was last run
+echo "Finished clean_install at $(date)"

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# This script is used run build_runner most used command to generate the required files
+
+set -e
+
+echo "@\ Running build_runner"
+
+dart run build_runner build --delete-conflicting-outputs

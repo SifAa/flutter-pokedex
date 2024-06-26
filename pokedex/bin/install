@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# This script is used to install the project
+
+set -e
+
+touch -a .env
+
+# Install the Flutter packages
+echo "@\ Installing Flutter packages..."
+flutter pub get
+
+# If on a Mac, install the pods
+if [ "$(uname)" == "Darwin" ]; then
+  echo "@\ Installing iOS pods..."
+  cd ios
+  pod install --repo-update
+  cd ..
+fi
+
+# Generate the required files
+echo "@\ Generating files..."
+./bin/build_runner
