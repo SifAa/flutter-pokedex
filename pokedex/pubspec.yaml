@@ -19,7 +19,8 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=3.0.6 <4.0.0"
+  sdk: ">=3.3.0 <4.0.0"
+  flutter: ">=3.19.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -42,6 +43,7 @@ dependencies:
   sqlite3_flutter_libs: ^0.5.19+1 # This package is for drift, the sqlite3 library for flutter
   path_provider: ^2.1.2 # This package is for drift, the path provider plugin for flutter
   path: ^1.8.3 # This package is for drift, a string-based path manipulation library
+  json_annotation: ^4.9.0 # This package is for generating code for JSON serialization and deserialization
 
 dev_dependencies:
   flutter_test:
@@ -52,9 +54,11 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^3.0.1 # This package is for linting, it is a set of recommended lints to encourage good coding practices
+  flutter_lints: ^4.0.0 # This package is for linting, it is a set of recommended lints to encourage good coding practices
   drift_dev: ^2.15.0 # This package is for database management, the dev package defining the APIs you use to access drift databases
-  build_runner: ^2.4.8 # This package is for generating code for JSON serialization and deserialization
+  build_runner: ^2.4.11 # This package is for generating files using Dart code
+  build_web_compilers: ^4.0.10 # This package is for generating files using Dart code
+  json_serializable: ^6.8.0 # This package is for generating code for JSON serialization and deserialization
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
