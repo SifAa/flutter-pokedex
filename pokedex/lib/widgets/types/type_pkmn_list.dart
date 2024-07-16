@@ -28,7 +28,7 @@ class _TypePkmnListState extends State<TypePkmnList> {
   }
 
   void getPkmnFromApi(String type) async {
-    PokeAPI.getPkmn(type).then((response) async {
+    PokeTypeAPI.getPkmn(type).then((response) async {
       List<Map<String, dynamic>> data =
           List.from(jsonDecode(response.body)['pokemon']);
       List<Pokemon> updatedPokemonList = [];
