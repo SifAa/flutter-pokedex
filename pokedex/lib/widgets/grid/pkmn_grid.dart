@@ -5,16 +5,28 @@ import 'package:pokedex/widgets/grid/pkmnn_grid_items.dart';
 
 class PkmnGrid extends StatefulWidget {
   final List<Pokemon> pokemon;
-  const PkmnGrid({Key? key, required this.pokemon}) : super(key: key);
+  const PkmnGrid({required this.pokemon, super.key});
 
   @override
   State<PkmnGrid> createState() => _PkmnGridState();
+
+  // public method to scroll to a specific index for external access
+  void scrollToIndex(int index) {
+    _PkmnGridState().scrollToIndex(index);
+  }
 }
 
 class _PkmnGridState extends State<PkmnGrid> {
+  final ScrollController _scrollController = ScrollController();
+  final itemHeight = 244.0;
+
+  void scrollToIndex(int index) {
+    _scrollController.animateTo(index * itemHeight,
+        duration: const Duration(seconds: 1), curve: Curves.easeInOut);
+  }
+
   @override
   Widget build(BuildContext context) {
-    final scrollController = ScrollController();
     final width = MediaQuery.of(context).size.width;
     final crossAxisCount = (width > 1000)
         ? 5
@@ -28,12 +40,13 @@ class _PkmnGridState extends State<PkmnGrid> {
         return pkmnGridItem(context, index, animation, widget.pokemon);
       },
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: widget.pokemon.isEmpty ? 1 : crossAxisCount,
-          crossAxisSpacing: 4,
-          mainAxisSpacing: 4,
-          childAspectRatio: 200 / 244),
+        crossAxisCount: widget.pokemon.isEmpty ? 1 : crossAxisCount,
+        crossAxisSpacing: 4,
+        mainAxisSpacing: 4,
+        childAspectRatio: 200 / itemHeight,
+      ),
       itemCount: widget.pokemon.length,
-      controller: scrollController,
+      controller: _scrollController,
       showItemDuration: const Duration(milliseconds: 1000),
       showItemInterval: const Duration(milliseconds: 50),
       visibleFraction: 0.001,
